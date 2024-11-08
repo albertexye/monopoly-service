@@ -4,7 +4,7 @@ This is the data service application for the
 [CS 262 Monopoly project](https://github.com/albertexye/monopoly-project),
  which is deployed here:
           
-- <https://albertexye-cs262.postgres.database.azure.com>
+- <https://monopoly-byczf6dbera4fuhd.canadacentral-01.azurewebsites.net>
 
 It has the following read data route URLs:
 - `/` a hello message
