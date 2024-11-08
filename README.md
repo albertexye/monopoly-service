@@ -1,10 +1,10 @@
 # CS 262 Monopoly Webservice
 
 This is the data service application for the 
-[CS 262 sample Monopoly project](https://github.com/calvin-cs262-organization/monopoly-project),
+[CS 262 Monopoly project](https://github.com/albertexye/monopoly-project),
  which is deployed here:
           
-- <https://cs262-webservice.azurewebsites.net/>
+- <https://albertexye-cs262.postgres.database.azure.com>
 
 It has the following read data route URLs:
 - `/` a hello message
