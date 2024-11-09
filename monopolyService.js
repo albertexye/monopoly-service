@@ -50,6 +50,7 @@ router.use(express.json());
 router.get('/', readHelloMessage);
 router.get('/players', readPlayers);
 router.get('/players/:id', readPlayer);
+router.get('/players/:id/games', readPlayerGames);
 router.put('/players/:id', updatePlayer);
 router.post('/players', createPlayer);
 router.delete('/players/:id', deletePlayer);
@@ -83,6 +84,16 @@ function readPlayers(req, res, next) {
 
 function readPlayer(req, res, next) {
   db.oneOrNone('SELECT * FROM Player WHERE id=${id}', req.params)
+    .then((data) => {
+      returnDataOr404(res, data);
+    })
+    .catch((err) => {
+      next(err);
+    });
+}
+
+function readPlayerGames(req, res, next) {
+  db.many('SELECT * FROM Player, Game WHERE Player.ID=${id} AND Player.ID=Game.playerID', req.params)
     .then((data) => {
       returnDataOr404(res, data);
     })
