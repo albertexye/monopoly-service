@@ -7,9 +7,10 @@ This is the data service application for the
 - <https://monopoly-byczf6dbera4fuhd.canadacentral-01.azurewebsites.net>
 
 It has the following read data route URLs:
-- `/` a hello message
-- `/players` a list of players
-- `/players/:id` a single player with the given ID
+- `/` a hello message, nullipotent
+- `/players` a list of players, nullipotent
+- `/players/:id` a single player with the given ID, nullipotent
+- `/players/:id/games` a list of games that a player has, nullipotent
 
 It is based on the standard Azure App Service tutorial for Node.js.
 
@@ -25,4 +26,12 @@ it&rsquo;s easier to auto-deploy a separate repo to Azure. For your team project
 data service, configure your Azure App Service to auto-deploy from the master/main branch 
 of your service repo. See the settings for this in the &ldquo;Deployment Center&rdquo; 
 on your Azure service dashboard.
+
+The service is RESTful because:
+- it uses explicit URIs: the player id is included in the URI
+- it uses the HTTP protocol: https://
+- it is stateless: previous requests don't affect the current request
+- it uses JSON to transfer data
+
+Impedance Mismatch: Not so much, as the relationship between players and games is many-to-many, it fits into the SQL data model. So far, there isn't a clear mismatch. But once the properties and player positions are implemented, there will be an obvious mismatch as a player OWNS properties and the position, which SQL data model cannot accurately represent. 
  
