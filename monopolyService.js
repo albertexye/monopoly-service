@@ -93,7 +93,7 @@ function readPlayer(req, res, next) {
 }
 
 function readPlayerGames(req, res, next) {
-  db.many('SELECT * FROM Player, Game WHERE Player.ID=${id} AND Player.ID=Game.playerID', req.params)
+  db.many('SELECT Game.ID, Game.time FROM Player, PlayerGame, Game WHERE Player.ID=${id} AND Player.ID=PlayerGame.playerID AND Game.ID=PlayerGame.ID', req.params)
     .then((data) => {
       returnDataOr404(res, data);
     })
